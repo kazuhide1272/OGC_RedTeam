@@ -8,33 +8,52 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject redDoor;
     [SerializeField] GameObject redblueDoor;
     [SerializeField] GameObject redgreenDoor;
+    [SerializeField] GameObject redyellowDoor;
     //青いドア
     [SerializeField] GameObject blueDoor;
     [SerializeField] GameObject blueredDoor;
     [SerializeField] GameObject bluegreenDoor;
+    [SerializeField] GameObject blueyelloeDoor;
     //緑ドア
     [SerializeField] GameObject greenDoor;
     [SerializeField] GameObject greenredDoor;
     [SerializeField] GameObject greenblueDoor;
+    [SerializeField] GameObject greenyellowDoor;
+    //黄色い鍵
+    [SerializeField] GameObject yellowDoor;
+    [SerializeField] GameObject yellowredDoor;
+    [SerializeField] GameObject yellowblueDoor;
+    [SerializeField] GameObject yellowgreenDoor;
+
     //赤い鍵
     [SerializeField] GameObject redKey;
-    [SerializeField] GameObject redblueKey;
-    [SerializeField] GameObject redgreenKey;
+    //[SerializeField] GameObject redblueKey;
+    //[SerializeField] GameObject redgreenKey;
+   // [SerializeField] GameObject redyellowKey;
     //青い鍵
     [SerializeField] GameObject blueKey;
-    [SerializeField] GameObject blueredKey;
-    [SerializeField] GameObject bluegreenKey;
-    [SerializeField] GameObject blueyellowKey;
+   // [SerializeField] GameObject blueredKey;
+   // [SerializeField] GameObject bluegreenKey;
+   // [SerializeField] GameObject blueyellowKey;
     //緑鍵
     [SerializeField] GameObject greenKey;
+   // [SerializeField] GameObject greenredKey;
+   // [SerializeField] GameObject greenblueKey;
+  //  [SerializeField] GameObject greenyellowKey;
+    //黄色い鍵
+    [SerializeField] GameObject yellowKey;
+   // [SerializeField] GameObject yellowredKey;
+  //  [SerializeField] GameObject yellowblueKey;
+  //  [SerializeField] GameObject yellowgreenKey;
 
     private int door1;
     private int door2;
+    private int door3;
     private int key;
     int rightDoor;
-    Vector3 initialDoor1Pos;
-    Vector3 initialDoor2Pos;
-    Vector3 initialKeyPos;
+    public Vector3 initialDoor1Pos;
+    public Vector3 initialDoor2Pos;
+    public Vector3 initialKeyPos;
     float ExcludeDoorPos;
 
     // Start is called before the first frame update
