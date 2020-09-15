@@ -22,7 +22,7 @@ public class Key : MonoBehaviour
     public void Dragkey()
     {
         data = Input.mousePosition;
-        Debug.Log("Hellow");
+        //Debug.Log("Hellow");
         Vector3 TargetPos = Camera.main.ScreenToWorldPoint(data);
         TargetPos.z = 0;
         transform.position = TargetPos;

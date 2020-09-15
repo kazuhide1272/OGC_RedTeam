@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Door : MonoBehaviour
+public class GameController : MonoBehaviour
 {
+    SerializeField[
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +14,6 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-   public void onDrop()
-    {
-        Debug.Log("hellow");
         
     }
 }
