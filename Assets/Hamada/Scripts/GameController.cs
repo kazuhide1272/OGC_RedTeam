@@ -27,63 +27,183 @@ public class GameController : MonoBehaviour
 
     //赤い鍵
     [SerializeField] GameObject redKey;
-    //[SerializeField] GameObject redblueKey;
-    //[SerializeField] GameObject redgreenKey;
-   // [SerializeField] GameObject redyellowKey;
+    [SerializeField] GameObject redblueKey;
+    [SerializeField] GameObject redgreenKey;
+    [SerializeField] GameObject redyellowKey;
     //青い鍵
     [SerializeField] GameObject blueKey;
-   // [SerializeField] GameObject blueredKey;
-   // [SerializeField] GameObject bluegreenKey;
-   // [SerializeField] GameObject blueyellowKey;
+    [SerializeField] GameObject blueredKey;
+    [SerializeField] GameObject bluegreenKey;
+    [SerializeField] GameObject blueyellowKey;
     //緑鍵
     [SerializeField] GameObject greenKey;
-   // [SerializeField] GameObject greenredKey;
-   // [SerializeField] GameObject greenblueKey;
-  //  [SerializeField] GameObject greenyellowKey;
+    [SerializeField] GameObject greenredKey;
+    [SerializeField] GameObject greenblueKey;
+    [SerializeField] GameObject greenyellowKey;
     //黄色い鍵
     [SerializeField] GameObject yellowKey;
-   // [SerializeField] GameObject yellowredKey;
-  //  [SerializeField] GameObject yellowblueKey;
-  //  [SerializeField] GameObject yellowgreenKey;
+    [SerializeField] GameObject yellowredKey;
+    [SerializeField] GameObject yellowblueKey;
+    [SerializeField] GameObject yellowgreenKey;
 
+    
+    //どのドアを使うか
     private int door1;
     private int door2;
     private int door3;
+    //どのカギを使うか
     private int key;
+
     int rightDoor;
     public Vector3 initialDoor1Pos;
     public Vector3 initialDoor2Pos;
     public Vector3 initialKeyPos;
+    public Vector3 initial;
     float ExcludeDoorPos;
+
+    //三枚ようの座標
+    public Vector3 Door1Pos3;
+    public Vector3 Door2Pos3;
+    public Vector3 Door3Pos3;
+
+
+    //ドアの枚数　false=2枚　true=3枚　
+    public bool Mode;
+
+    //ドアの位置を変数に格納
+    Vector3 red;
+    Vector3 redblue;
+    Vector3 redgreen;
+    Vector3 redyellow;
+
+    Vector3 blue;
+    Vector3 bluered;
+    Vector3 bluegreen;
+    Vector3 blueyellow;
+
+    Vector3 green;
+    Vector3 greenred;
+    Vector3 greenblue;
+    Vector3 greenyellow;
+        
+    Vector3 yellow;
+    Vector3 yellowred;
+    Vector3 yellowblue;
+    Vector3 yellowgreen;
+
+    //鍵の位置を変数に格納
+    Vector3 redKeyPos;
+    Vector3 redblueKeyPos;
+    Vector3 redgreenKeyPos;
+    Vector3 redyellowKeyPos;
+
+    Vector3 blueKeyPos;
+    Vector3 blueredKeyPos;
+    Vector3 bluegreenKeyPos;
+    Vector3 blueyellowKeyPos;
+
+    Vector3 greenKeyPos;
+    Vector3 greenredKeyPos;
+    Vector3 greenblueKeyPos;
+    Vector3 greenyellowKeyPos;
+
+    Vector3 yellowKeyPos;
+    Vector3 yellowredKeyPos;
+    Vector3 yellowblueKeyPos;
+    Vector3 yellowgreenKeyPos;
+
+  
 
     // Start is called before the first frame update
     void Start()
     {
-        initialDoor1Pos = redDoor.transform.position;
-        initialDoor1Pos.z = 0;
-        initialDoor2Pos = blueDoor.transform.position;
-        initialDoor2Pos.z = 0;
-        initialKeyPos = redKey.transform.position;
-        initialKeyPos.z = 0;
+        red = redDoor.transform.position;
+        redblue = redblueDoor.transform.position;
+        redgreen = redgreenDoor.transform.position;
+        redyellow = redyellowDoor.transform.position;
+
+        blue = blueDoor.transform.position;
+        bluered = blueredDoor.transform.position;
+        bluegreen = bluegreenDoor.transform.position;
+        blueyellow = blueyelloeDoor.transform.position;
+
+        green = greenDoor.transform.position;
+        greenred = greenredDoor.transform.position;
+        greenblue = greenblueDoor.transform.position;
+        greenyellow = greenyellowDoor.transform.position;
+
+        yellow = yellowDoor.transform.position;
+        yellowred = yellowredDoor.transform.position;
+        yellowblue = yellowblueDoor.transform.position;
+        yellowgreen = yellowgreenDoor.transform.position;
+
+        redKeyPos = redKey.transform.position;
+        redblueKeyPos = redblueKey.transform.position;
+
+        redgreenKeyPos = redgreenKey.transform.position;
+        redyellowKeyPos = redyellowKey.transform.position;
+
+
+        blueKeyPos = blueKey.transform.position;
+        blueredKeyPos = blueredKey.transform.position;
+        bluegreenKeyPos = bluegreenKey.transform.position;
+        blueyellowKeyPos = blueyellowKey.transform.position;
+
+        greenKeyPos = greenKey.transform.position;
+        greenredKeyPos = greenredKey.transform.position;
+        greenblueKeyPos = greenblueKey.transform.position;
+        greenyellowKeyPos = greenyellowKey.transform.position;
+
+        yellowKeyPos = yellowKey.transform.position;
+        yellowredKeyPos = yellowredKey.transform.position;
+        yellowblueKeyPos = yellowblueKey.transform.position;
+        yellowgreenKeyPos = yellowgreenKey.transform.position;
+
 
 
         //画面外のドアの位置
-        ExcludeDoorPos = 10;
+        //ExcludeDoorPos = 10;
+
+        //ドアの位置を三枚用に置き換える（動的に変更したいならUpdate)
+        if (Mode == true)
+        {
+            initialDoor1Pos = Door1Pos3;
+            initialDoor2Pos = Door2Pos3;
+            //三枚目の変数=Door3Pos3 
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKey)
+
+        //テスト起動用　いらない
+        if (Input.GetMouseButton(0))
         {
+
+           
             DeployObj();
+
+                // Debug.Log("door1");
+                Debug.Log(door1);
+                // Debug.Log("door2");
+                Debug.Log(door2);
+               
+            
         }
+        if(Input.GetMouseButton(1))
+        {
+            initializedDoor();
+        }
+
+       
     }
 
     public void random()
     {
-        door1 = Random.Range(0, 3);
-        door2 = Random.Range(0, 3);
+        door1 = Random.Range(0, 9);
+        door2 = Random.Range(0, 9);
         if (door1 == door2)
         {
             random();
@@ -101,60 +221,351 @@ public class GameController : MonoBehaviour
                     break;
 
             }
+
+            Debug.Log("ramdom");
         }
 
 
     }
-    public void initialazeDoor()
+
+    //三枚用ランダム関数
+    public void random3()
     {
+        door1 = Random.Range(0, 16);
+        door2 = Random.Range(0, 16);
+        door3 = Random.Range(0, 16);
+        if (door1 == door2)
+        {
+            random3();
+        }
+        else if (door1 == door3)
+        {
+            random3();
+        }
+        else if(door2 == door3)
+        {
+            random3();
+        }
+        else
+        {
+            rightDoor = Random.Range(0, 3);
+            switch (rightDoor)
+            {
+                case 0:
+                    key = door1;
+                    break;
+                case 1:
+                    key = door2;
+                    break;
+                case 2:
+                    key = door3;
+                    break;
+
+            }
+
+            
+        }
+
 
     }
 
+    public void initializedDoor()
+    {
+        //画面外へドアを移動させる関数
+
+        red = redblue = redgreen = redyellow = blue = bluered = bluegreen = blueyellow = green = greenred = greenblue = greenyellow = yellow = yellowred = yellowblue = yellowgreen = initial;
+        redDoor.transform.position = red;
+        redblueDoor.transform.position = redblue;
+        redgreenDoor.transform.position = redgreen;
+        redyellowDoor.transform.position = redyellow;
+
+        blueDoor.transform.position = blue;
+        blueredDoor.transform.position = bluered;
+        bluegreenDoor.transform.position = bluegreen;
+        blueyelloeDoor.transform.position = blueyellow;
+
+        greenDoor.transform.position = green;
+        greenredDoor.transform.position = greenred;
+        greenblueDoor.transform.position = greenblue;
+        greenyellowDoor.transform.position = greenyellow;
+
+        //黄色も記述してね
+        
+        
+    }
+    
+    public void initializedKey()
+    {
+        redKeyPos = redblueKeyPos = initial;//要作業　他の鍵もすべて記入する
+        redKey.transform.position = redKeyPos;//要作業　ほかの鍵もすべて記入する　（上の関数を参考に）
+    }
+    
+
     public void DeployObj()
     {
-        random();
-
+        if (Mode == true)
+        {
+            random3();
+        }
+        else
+        {
+            random();
+        }
+       
 
 
         //RightDoor
         switch (door1)
         {
             case 0:
-                redDoor.transform.position = initialDoor1Pos;
+              red = initialDoor1Pos;
+                redDoor.transform.position = red;
                 break;
             case 1:
-                blueDoor.transform.position = initialDoor1Pos;
+                redblue = initialDoor1Pos;
+                redblueDoor.transform.position = redblue;
                 break;
+            case 2:
+                redgreen = initialDoor1Pos;
+                redgreenDoor.transform.position = redgreen;
+                break;
+            case 3:
+               blue = initialDoor1Pos;
+                blueDoor.transform.position = blue;
+                break;
+            case 4:
+                bluered = initialDoor1Pos;
+                blueredDoor.transform.position = bluered;
+                break;
+            case 5:
+                bluegreen = initialDoor1Pos;
+                bluegreenDoor.transform.position = bluegreen;
+                break;
+            case 6:
+                green=initialDoor1Pos;
+                greenDoor.transform.position = green;
+                break;
+            case 7:
+                greenred = initialDoor1Pos;
+                greenredDoor.transform.position = greenred;
+                break;
+            case 8:
+                greenblue = initialDoor1Pos;
+                greenblueDoor.transform.position = greenblue;
+                break;
+
+            //ドア三つ
+            case 9:
+                redyellow = initialDoor1Pos;
+                break;
+            case 10:
+                blueyellow = initialDoor1Pos;
+                break;
+            case 11:
+                greenyellow = initialDoor1Pos;
+                break;
+            case 12:
+                yellow = initialDoor1Pos;
+                break;
+            case 13:
+                yellowred = initialDoor1Pos;
+                break;
+            case 14:
+                yellowblue = initialDoor1Pos;
+                break;     
             default:
-                greenDoor.transform.position = initialDoor1Pos;
+                yellowgreen = initialDoor1Pos;
+                yellowgreenDoor.transform.position = yellowgreen;
                 break;
         }
 
         //LeftDoor
         switch (door2)
-        {
+
+        { 
             case 0:
-                redDoor.transform.position = initialDoor2Pos;
+            red = initialDoor2Pos;
+                redDoor.transform.position = red;
+            break;
+        case 1:
+            redblue = initialDoor2Pos;
+                redblueDoor.transform.position = redblue;
+            break;
+        case 2:
+            redgreen = initialDoor2Pos;
+                redgreenDoor.transform.position = redgreen;
+            break;
+        case 3:
+            blue = initialDoor2Pos;
+                blueDoor.transform.position = blue;
+            break;
+        case 4:
+            bluered = initialDoor2Pos;
+                blueredDoor.transform.position = bluered;
+            break;
+        case 5:
+            bluegreen = initialDoor2Pos;
+                bluegreenDoor.transform.position = bluegreen;
+            break;
+        case 6:
+            green = initialDoor2Pos;
+                greenDoor.transform.position = green;
+            break;
+        case 7:
+            greenred = initialDoor2Pos;
+                greenredDoor.transform.position = greenred;
+            break;
+        case 8:
+                greenblue = initialDoor2Pos;
+                greenblueDoor.transform.position = greenblue;
+            break;
+        //ドア３つ
+        case 9:
+                redyellow = initialDoor2Pos;
                 break;
-            case 1:
-                blueDoor.transform.position = initialDoor2Pos;
+        case 10:
+                blueyellow = initialDoor2Pos;
                 break;
-            default:
-                greenDoor.transform.position = initialDoor2Pos;
+        case 11:
+                greenyellow = initialDoor2Pos;
                 break;
+        case 12:
+                yellow = initialDoor2Pos;
+                break;
+        case 13:
+                yellowred = initialDoor2Pos;
+                break;
+        case 14:
+                yellowblue = initialDoor2Pos;
+                break;
+        default:
+                yellowgreen = initialDoor2Pos;
+                break;
+                
+        }
+
+        //三枚目
+        //要作業　door2→door3 initialDoor2Pos→Door3Pos3　に書き換える
+        if (Mode == true)
+        {
+            switch (door2)
+
+            {
+                case 0:
+                    red = initialDoor2Pos;
+                    redDoor.transform.position = red;
+                    break;
+                case 1:
+                    redblue = initialDoor2Pos;
+                    redblueDoor.transform.position = redblue;
+                    break;
+                case 2:
+                    redgreen = initialDoor2Pos;
+                    redgreenDoor.transform.position = redgreen;
+                    break;
+                case 3:
+                    blue = initialDoor2Pos;
+                    blueDoor.transform.position = blue;
+                    break;
+                case 4:
+                    bluered = initialDoor2Pos;
+                    blueredDoor.transform.position = bluered;
+                    break;
+                case 5:
+                    bluegreen = initialDoor2Pos;
+                    bluegreenDoor.transform.position = bluegreen;
+                    break;
+                case 6:
+                    green = initialDoor2Pos;
+                    greenDoor.transform.position = green;
+                    break;
+                case 7:
+                    greenred = initialDoor2Pos;
+                    greenredDoor.transform.position = greenred;
+                    break;
+                case 8:
+                    greenblue = initialDoor2Pos;
+                    greenblueDoor.transform.position = greenblue;
+                    break;
+                //ドア３つ
+                case 9:
+                    redyellow = initialDoor2Pos;
+                    break;
+                case 10:
+                    blueyellow = initialDoor2Pos;
+                    break;
+                case 11:
+                    greenyellow = initialDoor2Pos;
+                    break;
+                case 12:
+                    yellow = initialDoor2Pos;
+                    break;
+                case 13:
+                    yellowred = initialDoor2Pos;
+                    break;
+                case 14:
+                    yellowblue = initialDoor2Pos;
+                    break;
+                default:
+                    yellowgreen = initialDoor2Pos;
+                    break;
+
+            }
         }
 
         //Key
+        //要作業　(色)key.transform.position=(色)keyPos　と記述する。下を参考に
         switch (key)
         {
             case 0:
-                redKey.transform.position = initialKeyPos;
+                redKeyPos = initialKeyPos;
+                redKey.transform.position = redKeyPos;//これと
                 break;
             case 1:
-                blueKey.transform.position = initialKeyPos;
+                redblueKeyPos = initialKeyPos;
+                redblueKey.transform.position = redblueKeyPos;//これを参考に下のも記述する
+                break;
+            case 2:
+                redgreenKeyPos = initialKeyPos;
+                break;
+            case 3:
+                blueKeyPos = initialKeyPos;
+                break;
+            case 4:
+                blueredKeyPos = initialKeyPos;
+                break;
+            case 5:
+                bluegreenKeyPos = initialKeyPos;
+                break;
+            case 6:
+                greenKeyPos = initialKeyPos;
+                break;
+            case 7:
+                greenredKeyPos = initialKeyPos;
+                break;
+            case 8:
+                greenblueKeyPos = initialKeyPos;
+                break;
+            case 9:
+                redyellowKeyPos = initialKeyPos;
+                break;
+            case 10:
+                blueyellowKeyPos = initialKeyPos;
+                break;
+            case 11:
+                greenyellowKeyPos = initialKeyPos;
+                break;
+            case 12:
+                yellowKeyPos = initialKeyPos;
+                break;
+            case 13:
+                yellowredKeyPos = initialKeyPos;
+                break;
+            case 14:
+                yellowblueKeyPos = initialKeyPos;
                 break;
             default:
-                greenKey.transform.position = initialKeyPos;
+                yellowgreenKeyPos = initialKeyPos;
                 break;
         }
 
