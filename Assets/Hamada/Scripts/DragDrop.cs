@@ -9,6 +9,13 @@ public class DragDrop : MonoBehaviour{
     private Vector3 offset;
     private Vector3 originPosition;
 
+    public AudioClip sound1;
+    public AudioClip sound2;
+    public AudioClip sound3;
+
+    [SerializeField]UnityEngine.AudioSource audioSource;
+
+
     private bool m_enableInput = true;
 
     public void OnMouseDown()
@@ -41,10 +48,14 @@ public class DragDrop : MonoBehaviour{
         if (gameObject.CompareTag(collision.gameObject.tag)) {
             m_game.Deploy();
             m_game.Score++;
+            audioSource.PlayOneShot(sound1);
+            audioSource.PlayOneShot(sound2);
+
         }
         else {
             m_enableInput = false;
             StartCoroutine(DisableInputCoroutine());
+            audioSource.PlayOneShot(sound3);
         }
     }
 }
