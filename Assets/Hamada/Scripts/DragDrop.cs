@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragDrop : MonoBehaviour
-{
+public class DragDrop : MonoBehaviour{
+    [SerializeField] private GameManager m_game;
+
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 originPosition;
+
+    private bool m_enableInput = true;
 
     public void OnMouseDown()
     {
@@ -19,6 +22,7 @@ public class DragDrop : MonoBehaviour
 
    public void OnMouseDrag()
     {
+        if(!m_enableInput) return;
         Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + this.offset;
         transform.position = currentPosition;
@@ -26,6 +30,21 @@ public class DragDrop : MonoBehaviour
     public void OnMouseUp()
     {
         transform.position = originPosition;
+    }
 
+    private IEnumerator DisableInputCoroutine(){
+        yield return new WaitForSeconds(2.0f);
+        m_enableInput = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision){
+        if (gameObject.CompareTag(collision.gameObject.tag)) {
+            m_game.Deploy();
+            m_game.Score++;
+        }
+        else {
+            m_enableInput = false;
+            StartCoroutine(DisableInputCoroutine());
+        }
     }
 }
