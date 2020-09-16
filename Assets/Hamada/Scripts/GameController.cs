@@ -171,24 +171,23 @@ public class GameController : MonoBehaviour
             initialDoor2Pos = Door2Pos3;
             //三枚目の変数=Door3Pos3 
         }
-
+        DeployObj();
     }
+
 
     // Update is called once per frame
     void Update()
     {
 
         //テスト起動用　いらない
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
 
            
-            DeployObj();
+          // DeployObj();
 
                 // Debug.Log("door1");
-                Debug.Log(door1);
                 // Debug.Log("door2");
-                Debug.Log(door2);
                
             
         }
@@ -221,8 +220,6 @@ public class GameController : MonoBehaviour
                     break;
 
             }
-
-            Debug.Log("ramdom");
         }
 
 
@@ -289,15 +286,39 @@ public class GameController : MonoBehaviour
         greenblueDoor.transform.position = greenblue;
         greenyellowDoor.transform.position = greenyellow;
 
-        //黄色も記述してね
+        yellowDoor.transform.position = yellow;
+        yellowredDoor.transform.position = yellowred;
+        yellowblueDoor.transform.position = yellowblue;
+        yellowgreenDoor.transform.position = yellowgreen;
+
+        //黄色追加済
         
         
     }
     
     public void initializedKey()
     {
-        redKeyPos = redblueKeyPos = initial;//要作業　他の鍵もすべて記入する
-        redKey.transform.position = redKeyPos;//要作業　ほかの鍵もすべて記入する　（上の関数を参考に）
+        redKeyPos = redblueKeyPos = redgreenKeyPos = redyellowKeyPos = blueKeyPos = blueredKeyPos = bluegreenKeyPos = blueyellowKeyPos = greenKeyPos = greenredKeyPos = greenblueKeyPos = greenyellowKeyPos = yellowKeyPos = yellowredKeyPos = yellowblueKeyPos = yellowgreenKeyPos = initial;//要作業　他の鍵もすべて記入する　済
+        redKey.transform.position = redKeyPos;
+        redblueKey.transform.position = redblueKeyPos;
+        redgreenKey.transform.position = redgreenKeyPos; 
+        redyellowKey.transform.position = redyellowKeyPos;
+
+        blueKey.transform.position = blueKeyPos;
+        blueredKey.transform.position = blueredKeyPos;
+        bluegreenKey.transform.position = bluegreenKeyPos;
+        blueyellowKey.transform.position = blueyellowKeyPos;
+
+        greenKey.transform.position = greenKeyPos;
+        greenredKey.transform.position = greenredKeyPos;
+        greenblueKey.transform.position = greenblueKeyPos;
+        greenyellowKey.transform.position = greenyellowKeyPos;
+
+        yellowKey.transform.position = yellowKeyPos;
+        yellowredKey.transform.position = yellowredKeyPos;
+        yellowblueKey.transform.position = yellowblueKeyPos;
+        yellowgreenKey.transform.position = yellowgreenKeyPos;
+        //要作業　ほかの鍵もすべて記入する　（上の関数を参考に）済
     }
     
 
@@ -445,69 +466,69 @@ public class GameController : MonoBehaviour
         }
 
         //三枚目
-        //要作業　door2→door3 initialDoor2Pos→Door3Pos3　に書き換える
+        //要作業　door2→door3 initialDoor2Pos→Door3Pos3　に書き換える　済
         if (Mode == true)
         {
-            switch (door2)
+            switch (door3)
 
             {
                 case 0:
-                    red = initialDoor2Pos;
+                    red = Door3Pos3;
                     redDoor.transform.position = red;
                     break;
                 case 1:
-                    redblue = initialDoor2Pos;
+                    redblue = Door3Pos3;
                     redblueDoor.transform.position = redblue;
                     break;
                 case 2:
-                    redgreen = initialDoor2Pos;
+                    redgreen = Door3Pos3;
                     redgreenDoor.transform.position = redgreen;
                     break;
                 case 3:
-                    blue = initialDoor2Pos;
+                    blue = Door3Pos3;
                     blueDoor.transform.position = blue;
                     break;
                 case 4:
-                    bluered = initialDoor2Pos;
+                    bluered = Door3Pos3;
                     blueredDoor.transform.position = bluered;
                     break;
                 case 5:
-                    bluegreen = initialDoor2Pos;
+                    bluegreen = Door3Pos3;
                     bluegreenDoor.transform.position = bluegreen;
                     break;
                 case 6:
-                    green = initialDoor2Pos;
+                    green = Door3Pos3;
                     greenDoor.transform.position = green;
                     break;
                 case 7:
-                    greenred = initialDoor2Pos;
+                    greenred = Door3Pos3;
                     greenredDoor.transform.position = greenred;
                     break;
                 case 8:
-                    greenblue = initialDoor2Pos;
+                    greenblue = Door3Pos3; 
                     greenblueDoor.transform.position = greenblue;
                     break;
                 //ドア３つ
                 case 9:
-                    redyellow = initialDoor2Pos;
+                    redyellow = Door3Pos3;
                     break;
                 case 10:
-                    blueyellow = initialDoor2Pos;
+                    blueyellow = Door3Pos3;
                     break;
                 case 11:
-                    greenyellow = initialDoor2Pos;
+                    greenyellow = Door3Pos3;
                     break;
                 case 12:
-                    yellow = initialDoor2Pos;
+                    yellow = Door3Pos3;
                     break;
                 case 13:
-                    yellowred = initialDoor2Pos;
+                    yellowred = Door3Pos3;
                     break;
                 case 14:
-                    yellowblue = initialDoor2Pos;
+                    yellowblue = Door3Pos3;
                     break;
                 default:
-                    yellowgreen = initialDoor2Pos;
+                    yellowgreen = Door3Pos3;
                     break;
 
             }
@@ -523,49 +544,63 @@ public class GameController : MonoBehaviour
                 break;
             case 1:
                 redblueKeyPos = initialKeyPos;
-                redblueKey.transform.position = redblueKeyPos;//これを参考に下のも記述する
+                redblueKey.transform.position = redblueKeyPos;//これを参考に下のも記述する 済
                 break;
             case 2:
                 redgreenKeyPos = initialKeyPos;
+                redgreenKey.transform.position = redgreenKeyPos;
                 break;
             case 3:
                 blueKeyPos = initialKeyPos;
+                blueKey.transform.position = blueKeyPos;
                 break;
             case 4:
                 blueredKeyPos = initialKeyPos;
+                blueredKey.transform.position = blueredKeyPos;
                 break;
             case 5:
                 bluegreenKeyPos = initialKeyPos;
+                bluegreenKey.transform.position = bluegreenKeyPos;
                 break;
             case 6:
                 greenKeyPos = initialKeyPos;
+                greenKey.transform.position = greenKeyPos;
                 break;
             case 7:
                 greenredKeyPos = initialKeyPos;
+                greenredKey.transform.position = greenredKeyPos;
                 break;
             case 8:
                 greenblueKeyPos = initialKeyPos;
+                greenblueKey.transform.position = greenblueKeyPos;
                 break;
             case 9:
                 redyellowKeyPos = initialKeyPos;
+                redyellowKey.transform.position = redyellowKeyPos;
                 break;
             case 10:
                 blueyellowKeyPos = initialKeyPos;
+                blueyellowKey.transform.position = blueyellowKeyPos;
                 break;
             case 11:
                 greenyellowKeyPos = initialKeyPos;
+                greenyellowKey.transform.position = greenyellowKeyPos;
                 break;
             case 12:
                 yellowKeyPos = initialKeyPos;
+                yellowKey.transform.position = yellowKeyPos;
                 break;
             case 13:
                 yellowredKeyPos = initialKeyPos;
+                yellowredKey.transform.position = yellowredKeyPos;
                 break;
             case 14:
                 yellowblueKeyPos = initialKeyPos;
+                yellowblueKey.transform.position = yellowblueKeyPos;
                 break;
             default:
                 yellowgreenKeyPos = initialKeyPos;
+                yellowgreenKey.transform.position = yellowgreenKeyPos;
                 break;
         }
 

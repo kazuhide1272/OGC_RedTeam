@@ -3,7 +3,39 @@ guid: b2f0695c95b437140b7dbf57b9d0ee49
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - redDoor: {instanceID: 0}
+  - redblueDoor: {instanceID: 0}
+  - redgreenDoor: {instanceID: 0}
+  - redyellowDoor: {instanceID: 0}
+  - blueDoor: {instanceID: 0}
+  - blueredDoor: {instanceID: 0}
+  - bluegreenDoor: {instanceID: 0}
+  - blueyelloeDoor: {instanceID: 0}
+  - greenDoor: {instanceID: 0}
+  - greenredDoor: {instanceID: 0}
+  - greenblueDoor: {instanceID: 0}
+  - greenyellowDoor: {instanceID: 0}
+  - yellowDoor: {instanceID: 0}
+  - yellowredDoor: {instanceID: 0}
+  - yellowblueDoor: {instanceID: 0}
+  - yellowgreenDoor: {instanceID: 0}
+  - redKey: {instanceID: 0}
+  - redblueKey: {instanceID: 0}
+  - redgreenKey: {instanceID: 0}
+  - redyellowKey: {instanceID: 0}
+  - blueKey: {instanceID: 0}
+  - blueredKey: {instanceID: 0}
+  - bluegreenKey: {instanceID: 0}
+  - blueyellowKey: {instanceID: 0}
+  - greenKey: {instanceID: 0}
+  - greenredKey: {instanceID: 0}
+  - greenblueKey: {instanceID: 0}
+  - greenyellowKey: {instanceID: 0}
+  - yellowKey: {instanceID: 0}
+  - yellowredKey: {instanceID: 0}
+  - yellowblueKey: {instanceID: 0}
+  - yellowgreenKey: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
